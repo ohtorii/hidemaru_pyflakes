@@ -1,7 +1,12 @@
 #pyflakes を使用して python の構文検査を行う秀丸マクロ
 
+
 ##概要
 秀丸エディタで Python の構文検査を行います。
+
+
+###スクリーンショット
+- ![pyflakes hidemaru](http://f.st-hatena.com/images/fotolife/o/ohtorii/20140525/20140525203053.png "Python 秀丸エディタ")
 
 
 ###インストール方法
