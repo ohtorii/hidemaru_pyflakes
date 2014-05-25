@@ -1,0 +1,142 @@
+/* pyflakes を使用して python スクリプトの構文検検査を行う秀丸マクロ。
+
+【はじめに】
+pyflakes を使用して python スクリプトの構文検検査を行います。
+検査結果はアウトプット枠へ出力されます。
+
+
+【動作を確認したバージョン】
+秀丸エディタ ver8.40 b10（ver8 以降なら動くはず。）
+Python 2.7.2
+pyflakes 0.8.2a0 (https://github.com/pyflakes/pyflakes/)
+
+
+【インストール方法】
+本マクロをスクリプトディレクトリへコピーしキーアサインしてください。
+（まず、pyflakes が動くようにして下さい。）
+
+
+【カスタマイズ】
+使用する Python のバージョンやディレクトリをカスタマイズできます。
+本マクロの「ユーザーカスタマイズ」の項を参照して下さい。
+
+
+【pyflakesのバグ修正(version 0.8.2a0)】
+マクロ実行後に、以下例外が出力されたら、
+> AttributeError: 'module' object has no attribute 'SIGPIPE'
+
+次の手順で、Pyflakes のソースコードを修正して下さい。
+
+（対象ファイル）
+C:\Python27\Lib\site-packages\pyflakes\api.py line 129
+
+（修正前）
+># Handle "Keyboard Interrupt" and "Broken pipe" gracefully
+>try:
+>    signal.signal(signal.SIGINT, lambda sig, f: sys.exit('... stopped'))
+>    signal.signal(signal.SIGPIPE, lambda sig, f: sys.exit(1))
+>except ValueError:
+>    pass    # SIGPIPE is not supported on Windows
+>
+
+（修正後）
+># Handle "Keyboard Interrupt" and "Broken pipe" gracefully
+>try:
+>    signal.signal(signal.SIGINT, lambda sig, f: sys.exit('... stopped'))
+>    signal.signal(signal.SIGPIPE, lambda sig, f: sys.exit(1))
+>except AttributeError:  # <---- Change!!!
+>    pass    # SIGPIPE is not supported on Windows
+
+
+【連絡先】
+	http://d.hatena.ne.jp/ohtorii/
+	https://github.com/ohtorii
+*/
+
+
+//////////////////////////////////////////////////////////////////////////////
+//			ユーザーカスタマイズ
+//////////////////////////////////////////////////////////////////////////////
+
+//python.exe へのパス
+$g_exe	= "python.exe";
+//$g_exe	= "C:\\Python26\\python.exe";
+//$g_exe	= "C:\\Python27\\python.exe";
+//$g_exe	= "C:\\Python32\\python.exe";
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+//			内部処理
+//////////////////////////////////////////////////////////////////////////////
+
+call Main;
+endmacro;
+
+
+Main:
+	call CheckEnvironment;
+	if(! ##return){
+		return false;
+	}
+	if(filename2 == ""){
+		message("未保存のファイルを pyflakes で検査することは出来ません。\n予めファイルに保存して下さい。");
+		return false;
+	}
+	call Surround $g_exe, "\"";
+	$$exe=$$return;
+
+	call Surround filename2, "\"";
+	$$filename = $$return;
+
+	$$cmd = $$exe + " -m pyflakes " + $$filename;
+
+	runex $$cmd
+			, 1 			//sync	  0:async 1:sync
+			, 0, "" 		//stdin   0:none 1:auto 2:file 3:(reserve) 4:all 5:select
+			, 7, "" 		//stdout  0:none 1:auto 2:file 3:add file  4:new 5:insert 6:replace
+			, 1, "" 		//stderr  0:none 1:=out 2:file 3:add file  4:new 5:insert 6:replace
+			, 1, ""  		//folder  0:none 1:current 2:specify 3:(reserve) 4:exe's folder
+			, 2 			//show	  0:auto 1:show 2:hide
+			, 1 			//nodraw  0:draw 1:no draw
+			, 0 			//unicode 0:ansi 2:unicode
+			;
+	if(! result){
+		message("runex で失敗。!result");
+		return false;
+	}
+
+	return ##return ;
+
+
+CheckEnvironment:
+	##prev_hidemaru = hidemaruhandle(0);
+	openfile "/h ";
+	##new_hidemaru = hidemaruhandle(0);
+
+	//-V = バージョン取得
+	$$cmd = $g_exe + " -V";
+	runex $$cmd
+			, 1 			//sync	  0:async 1:sync
+			, 0, "" 		//stdin   0:none 1:auto 2:file 3:(reserve) 4:all 5:select
+			, 5, "" 		//stdout  0:none 1:auto 2:file 3:add file  4:new 5:insert 6:replace
+			, 1, "" 		//stderr  0:none 1:=out 2:file 3:add file  4:new 5:insert 6:replace
+			, 0, "" 		//folder  0:none 1:current 2:specify 3:(reserve) 4:exe's folder
+			, 2 			//show	  0:auto 1:show 2:hide
+			, 1 			//nodraw  0:draw 1:no draw
+			, 0 			//unicode 0:ansi 2:unicode
+			;
+	##ret = result;
+	if(##ret){
+		//pass
+	}else{
+		message("CheckEnvironmentで失敗、python.exeが存在しない可能性があります。\n" + $g_exe);
+	}
+	setactivehidemaru	##prev_hidemaru;
+	closehidemaruforced ##new_hidemaru;
+	return ##ret;
+
+Surround:
+	$$c = $$2;
+	return $$c + $$1 + $$c;
