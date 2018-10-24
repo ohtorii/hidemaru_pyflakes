@@ -1,29 +1,31 @@
-#pyflakes ‚ðŽg—p‚µ‚Ä python ‚Ì\•¶ŒŸ¸‚ðs‚¤GŠÛƒ}ƒNƒ
+# pyflakes ã‚’ä½¿ç”¨ã—ã¦ python ã®æ§‹æ–‡æ¤œæŸ»ã‚’è¡Œã†ç§€ä¸¸ãƒžã‚¯ãƒ­
 
 
-##ŠT—v
-GŠÛƒGƒfƒBƒ^‚Å Python ‚Ì\•¶ŒŸ¸‚ðs‚¢‚Ü‚·B
+## æ¦‚è¦
+ç§€ä¸¸ã‚¨ãƒ‡ã‚£ã‚¿ã§ Python ã®æ§‹æ–‡æ¤œæŸ»ã‚’è¡Œã„ã¾ã™ã€‚
 
 
-###ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg
-- ![pyflakes hidemaru](http://f.st-hatena.com/images/fotolife/o/ohtorii/20140525/20140525203053.png "Python GŠÛƒGƒfƒBƒ^")
+### ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆ
+- ![pyflakes hidemaru](http://f.st-hatena.com/images/fotolife/o/ohtorii/20140525/20140525203053.png "Python ç§€ä¸¸ã‚¨ãƒ‡ã‚£ã‚¿")
 
 
-###ƒCƒ“ƒXƒg[ƒ‹•û–@
-–{ƒ}ƒNƒ‚ðGŠÛƒ}ƒNƒ‚ÌƒfƒBƒŒƒNƒgƒŠ‚ÖƒRƒs[‚µ‚½‚çƒL[ƒAƒTƒCƒ“‚µ‚Ä‰º‚³‚¢B
-i‚Ü‚¸Apyflakes ‚ª“®‚­‚æ‚¤‚É‚µ‚Ä‰º‚³‚¢Bj
+### ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ–¹æ³•
+æœ¬ãƒžã‚¯ãƒ­ã‚’ç§€ä¸¸ãƒžã‚¯ãƒ­ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¸ã‚³ãƒ”ãƒ¼ã—ãŸã‚‰ã‚­ãƒ¼ã‚¢ã‚µã‚¤ãƒ³ã—ã¦ä¸‹ã•ã„ã€‚
+ï¼ˆã¾ãšã€pyflakes ãŒå‹•ãã‚ˆã†ã«ã—ã¦ä¸‹ã•ã„ã€‚ï¼‰
 
 
-##“®ì‚ðŠm”F‚µ‚½ƒo[ƒWƒ‡ƒ“
-- GŠÛƒGƒfƒBƒ^ ver8.40 b10iver8 ˆÈ~‚È‚ç“®‚­‚Í‚¸Bj
+## å‹•ä½œã‚’ç¢ºèªã—ãŸãƒãƒ¼ã‚¸ãƒ§ãƒ³
+- ç§€ä¸¸ã‚¨ãƒ‡ã‚£ã‚¿ ver8.40 b10ï¼ˆver8 ä»¥é™ãªã‚‰å‹•ãã¯ãšã€‚ï¼‰
 - Python 2.7.2
 - pyflakes 0.8.2a0 (https://github.com/pyflakes/pyflakes/)
 
 
-##ƒJƒXƒ^ƒ}ƒCƒY
-Žg—p‚·‚é Python ‚Ìƒo[ƒWƒ‡ƒ“‚âƒfƒBƒŒƒNƒgƒŠ‚ðƒJƒXƒ^ƒ}ƒCƒY‚Å‚«‚Ü‚·B
-–{ƒ}ƒNƒ‚Ìuƒ†[ƒU[ƒJƒXƒ^ƒ}ƒCƒYv‚Ì€‚ðŽQÆ‚µ‚Ä‰º‚³‚¢B
+## ã‚«ã‚¹ã‚¿ãƒžã‚¤ã‚º
+ä½¿ç”¨ã™ã‚‹ Python ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚„ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã‚«ã‚¹ã‚¿ãƒžã‚¤ã‚ºã§ãã¾ã™ã€‚
+æœ¬ãƒžã‚¯ãƒ­ã®ã€Œãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚«ã‚¹ã‚¿ãƒžã‚¤ã‚ºã€ã®é …ã‚’å‚ç…§ã—ã¦ä¸‹ã•ã„ã€‚
 
 
-##˜A—æ
+## é€£çµ¡å…ˆ
 http://d.hatena.ne.jp/ohtorii/
+https://github.com/ohtorii/
+https://twitter.com/ohtorii
